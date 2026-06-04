@@ -1,6 +1,10 @@
 #![forbid(unsafe_code)]
 
+mod parser;
+
 use std::fmt;
+
+pub use parser::parse_declaration_text;
 
 pub const KILN_VERSION: &str = "v0";
 
@@ -115,7 +119,7 @@ impl fmt::Display for Status {
 
 #[cfg(test)]
 mod tests {
-    use super::{DiagnosticCategory, Status, KILN_VERSION};
+    use super::{parse_declaration_text, DiagnosticCategory, Status, KILN_VERSION};
 
     #[test]
     fn exposes_v0_foundation_version() {
@@ -175,5 +179,49 @@ mod tests {
                 path.display()
             );
         }
+    }
+
+    #[test]
+    fn parses_valid_fixture_identity() {
+        let text = fixture_text("valid");
+        let declaration = parse_declaration_text(&text);
+        let capability = declaration.capability.as_ref().expect("capability");
+
+        assert_eq!(declaration.kiln_version.as_deref(), Some("v0"));
+        assert_eq!(capability.id, "example.echo");
+        assert!(declaration
+            .sections
+            .iter()
+            .any(|section| section == "checks"));
+    }
+
+    #[test]
+    fn missing_kiln_does_not_default_version() {
+        let text = fixture_text("missing-kiln");
+        let declaration = parse_declaration_text(&text);
+
+        assert_eq!(declaration.kiln_version, None);
+        assert!(declaration.capability.is_some());
+    }
+
+    #[test]
+    fn retains_boundary_fields_for_checker() {
+        let text = fixture_text("policy-authorized");
+        let declaration = parse_declaration_text(&text);
+
+        assert!(declaration
+            .fields
+            .iter()
+            .any(|field| field.path == "policy_needs.authorized" && field.value == "true"));
+    }
+
+    fn fixture_text(name: &str) -> String {
+        let path = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("..")
+            .join("..")
+            .join("fixtures")
+            .join(name)
+            .join("kiln.yaml");
+        std::fs::read_to_string(path).expect("fixture text")
     }
 }

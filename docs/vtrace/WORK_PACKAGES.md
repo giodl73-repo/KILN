@@ -21,7 +21,7 @@ implementation.
 | KILN-WP-001 | Reconcile pre-VTRACE docs with the accepted VTRACE baseline. | KILN-DES-010; KILN-UNK-005; KILN-RISK-001 | README, PRODUCT_PLAN, wave/pulse docs | VTRACE baseline through Implementation Plan accepted. | No doc claims crates/CLI/fixtures are accepted behavior before work packages. | L0: `git diff --check`; L1: role review; L2: n/a | complete |
 | KILN-WP-002 | Establish Rust workspace shape and dependency decision. | KILN-CR-010; KILN-CR-011; KILN-WAIVER-001 | Cargo workspace, dependency notes | WP-001 complete; dependency decision recorded. | Workspace validates; dependency posture has review evidence. | L0: fmt/check; L1: tests/dependency inspection; L2: n/a | complete |
 | KILN-WP-003 | Create declaration model and retained fixture matrix. | KILN-IF-001; KILN-FIX-001..KILN-FIX-010 | core model, fixtures | WP-002 complete; fixture schema target accepted. | All required fixtures exist and are documented. | L0: fixture inventory; L1: tests; L2: trace review | complete |
-| KILN-WP-004 | Implement parser and normalization. | KILN-DES-002; KILN-DES-003; KILN-CR-001..KILN-CR-004 | parser/normalizer | WP-003 complete; parser dependency decided. | Valid/malformed fixtures parse or fail explicitly. | L0: parser tests; L1: workspace tests; L2: n/a | proposed |
+| KILN-WP-004 | Implement parser and normalization. | KILN-DES-002; KILN-DES-003; KILN-CR-001..KILN-CR-004 | parser/normalizer | WP-003 complete; parser dependency decided. | Valid/malformed fixtures parse or fail explicitly. | L0: parser tests; L1: workspace tests; L2: n/a | complete |
 | KILN-WP-005 | Implement check rules, statuses, and diagnostics. | KILN-REQ-003..KILN-REQ-005; KILN-IF-004; KILN-CR-005..KILN-CR-007 | checker, classifier, diagnostics | WP-004 complete. | Required diagnostics/statuses match fixture matrix. | L0: rule tests; L1: workspace tests; L2: review | proposed |
 | KILN-WP-006 | Implement JSON build-record emitter. | KILN-REQ-006; KILN-IF-003; KILN-WAIVER-002 | build record emitter | WP-005 complete; `not_ready` record behavior decided. | JSON build records include required fields or fail visibly. | L0: snapshot tests; L1: workspace tests; L2: record inspection | proposed |
 | KILN-WP-007 | Integrate `kiln check` CLI. | KILN-IF-002; KILN-CR-007; KILN-CR-009 | CLI, exit codes, file IO | WP-006 complete. | CLI validates fixtures, maps exit codes, and remains side-effect-free. | L0: CLI fixtures; L1: workspace tests; L2: side-effect review | proposed |
@@ -309,7 +309,17 @@ Validation levels:
 | L1 | yes | `cargo test --workspace` | pending |
 | L2 | no | No downstream integration | n/a |
 
-Status: proposed.
+Status: complete.
+
+Closure evidence:
+
+| Item | Result |
+|---|---|
+| Input SHA | `d9601f2` |
+| Output SHA | this commit |
+| Parser | `crates\kiln-core\src\parser.rs` constrained section/field parser. |
+| Normalization | `parse_declaration_text` fills KILN version, capability identity, sections, and retained fields. |
+| Validation | `cargo fmt --check`; `cargo test --workspace`; `git diff --check` pass. |
 
 ### KILN-WP-005: Check rules and diagnostics
 
