@@ -15,9 +15,22 @@ whether the implementation satisfies controlled requirements. Validation asks
 whether the resulting behavior is useful, bounded, and credible for the users
 and handoffs described by Mission and CONOPS.
 
-No implementation evidence is claimed yet. Scenario results remain pending until
-the relevant work packages create docs, fixtures, build records, and retained
-outputs.
+KILN-WP-008 records implementation evidence for the foundation slice. Scenario
+results are accepted for local fixture/mock validation; real downstream CAL,
+WARDEN, DEPOT, GAUGE, runtime, and enterprise integrations remain deferred.
+
+## Executed Acceptance Summary
+
+| Scenario | Result | Evidence |
+|---|---|---|
+| KILN-VAL-001 | pass | `valid=0`; missing/degraded fixtures produce diagnostics and exit `1`. |
+| KILN-VAL-002 | pass_with_risk | Build record exposes checked inputs, status, diagnostics, gates, obligations, handoffs, and trace; no runtime execution. |
+| KILN-VAL-003 | pass | Policy authorization claim fixture is `not_ready`; no authorization success. |
+| KILN-VAL-004 | pass | Package publication/signing claim fixture is `not_ready`; no registry mutation. |
+| KILN-VAL-005 | pass | CAL semantic-definition fixture is `not_ready`; KILN records identifiers only. |
+| KILN-VAL-006 | pass_with_risk | Enterprise-required fixture is rejected from core; real UI adapter deferred. |
+| KILN-VAL-007 | pass | Workspace is std-only; no enterprise/provider/runtime/registry/policy dependency. |
+| KILN-VAL-008 | pass | VTRACE docs, work packages, evidence summaries, and commits make work resumable. |
 
 ## Validation Method Legend
 
@@ -210,9 +223,9 @@ Status: pending.
 
 | Gap | Impact | Disposition |
 |---|---|---|
-| KILN is not yet a Git repository. | SHA-based validation closure and `git diff --check` are unavailable. | Record as process gap; resolve during repo initialization before implementation closure. |
-| No implementation exists. | Fixture demonstrations and build-record inspection cannot run. | Expected until implementation work packages. |
-| No fixtures exist. | Scenario acceptance evidence cannot close. | Expected until KILN-WP-003. |
+| KILN local Git repository exists. | Local SHA-based validation closure is available. | Resolved locally; remote/submodule snapshot remains future portfolio work. |
+| Foundation implementation exists. | Fixture demonstrations and build-record inspection run locally. | Resolved for foundation slice. |
+| Fixtures exist. | Scenario acceptance evidence can close for local fixture scope. | Resolved in KILN-WP-003. |
 | No downstream CAL/WARDEN/DEPOT/GAUGE repos are baselined. | L2 validation must use boundary/mock evidence. | Accept for first slice; defer real integration. |
 | Pre-VTRACE README/Product Plan/wave docs may still imply implementation. | Future agents could mistake intent for accepted evidence. | Resolve in KILN-WP-001 before code. |
 

@@ -7,18 +7,16 @@
 | Repo | KILN |
 | VTRACE stage | Review |
 | Gate type | readiness |
-| Decision | pass_with_risk |
+| Decision | pass |
 | Date | 2026-06-03 |
 | Reviewer / lenses | KILN `.roles` simulated fixed-point review panel |
 | Stage status | Role-reviewed fixed point |
 
-This review gate determines whether KILN's VTRACE package is coherent enough to
-start controlled implementation work packages. It does not approve broad coding,
-release claims, downstream integration, package publication, runtime execution,
-policy authorization, or registry mutation.
-
-Approved next action: start KILN-WP-001, documentation baseline reconciliation,
-when the user explicitly starts implementation.
+This review gate records final local readiness for the KILN foundation slice.
+KILN-WP-001 through KILN-WP-008 have executed with local commits and evidence.
+It does not approve downstream integration, package publication, runtime
+execution, policy authorization, registry mutation, or release claims beyond the
+local foundation checker.
 
 ## Role Review Matrix
 
@@ -55,11 +53,11 @@ when the user explicitly starts implementation.
 
 | ID | Severity | Finding | Required Action | Disposition |
 |---|---|---|---|---|
-| KILN-FIND-001 | major | KILN is not yet initialized as a Git repository, so SHA-based fixed-point closure and `git diff --check` cannot run repo-locally. | Initialize/attach the public repo before implementation package closure and rerun `git diff --check`. | accepted risk for pre-implementation review; must close before code package completion |
-| KILN-FIND-002 | major | No implementation, Cargo workspace, fixtures, or executable evidence exists yet. | Start only through KILN-WP-001, then KILN-WP-002 and onward; keep all verification/validation evidence pending until generated. | accepted risk; expected before implementation |
-| KILN-FIND-003 | major | Pre-VTRACE README/Product Plan/wave docs may still imply implementation details that are not accepted behavior. | Execute KILN-WP-001 before any Rust/Cargo/fixture/CLI work. | required follow-up |
-| KILN-FIND-004 | major | Parser dependency choice is unresolved. | Resolve in KILN-WP-002 with dependency rationale and supply-chain review before parser code. | required follow-up |
-| KILN-FIND-005 | major | `not_ready` partial build-record behavior is unresolved. | Resolve before KILN-WP-006 build-record emitter work. | required follow-up |
+| KILN-FIND-001 | major | KILN is not yet initialized as a Git repository, so SHA-based fixed-point closure and `git diff --check` cannot run repo-locally. | Initialize/attach the public repo before implementation package closure and rerun `git diff --check`. | closed locally |
+| KILN-FIND-002 | major | No implementation, Cargo workspace, fixtures, or executable evidence exists yet. | Start only through KILN-WP-001, then KILN-WP-002 and onward; keep all verification/validation evidence pending until generated. | closed for foundation slice |
+| KILN-FIND-003 | major | Pre-VTRACE README/Product Plan/wave docs may still imply implementation details that are not accepted behavior. | Execute KILN-WP-001 before any Rust/Cargo/fixture/CLI work. | closed |
+| KILN-FIND-004 | major | Parser dependency choice is unresolved. | Resolve in KILN-WP-002 with dependency rationale and supply-chain review before parser code. | closed std-only |
+| KILN-FIND-005 | major | `not_ready` partial build-record behavior is unresolved. | Resolve before KILN-WP-006 build-record emitter work. | closed diagnostics-only JSON |
 | KILN-FIND-006 | minor | Downstream CAL, WARDEN, DEPOT, GAUGE, and runtime integrations are not baselined. | Keep first-slice L2 evidence fixture/mock/boundary-based; defer real integrations to later packages. | accepted risk |
 | KILN-FIND-007 | note | `.roles` review is AI-simulated from repo-local role definitions. | Continue recording simulated role findings unless/until an automated role runner or human review is added. | accepted |
 
@@ -124,13 +122,13 @@ cargo run -q -p kiln-cli -- check fixtures\enterprise-required\kiln.yaml --forma
 
 ## Result
 
-Final decision: pass_with_risk.
+Final decision: pass.
 
-Rationale: KILN's VTRACE package is coherent enough to move from pre-code
-planning into controlled implementation work packages. The first allowed package
-is KILN-WP-001, documentation baseline reconciliation. Implementation must remain
-one work package at a time, with package-local role review, evidence capture, and
-verification/validation updates as real artifacts appear.
+Rationale: KILN's foundation slice has been implemented through the controlled
+work packages and verified locally with Cargo tests, fixture CLI commands,
+code-rigor searches, and VTRACE evidence updates. Remaining work is portfolio
+publication/snapshot and later downstream integrations, not foundation-slice
+correctness.
 
 The review does not approve:
 
@@ -149,7 +147,7 @@ Stage ledger:
 
 | Repo | Stage | File | Status | Input SHA | Output SHA | Roles | Findings | Decision | Next |
 |---|---|---|---|---|---|---|---|---|---|
-| KILN | REVIEW | `docs/vtrace/REVIEW.md` | settled | pending repo init | pending repo init | KILN `.roles` simulated fixed-point review | No unresolved critical findings; major findings converted to required follow-up or accepted risk | pass_with_risk | KILN-WP-001 |
+| KILN | REVIEW | `docs/vtrace/REVIEW.md` | settled | `d8e91ed` | this commit | KILN `.roles` simulated fixed-point review | No unresolved critical/major foundation findings; downstream integrations deferred | pass | portfolio publication/snapshot |
 
 ## Source Links
 

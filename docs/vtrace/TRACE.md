@@ -11,10 +11,9 @@
 
 This trace matrix connects KILN's mission and CONOPS through requirements,
 specification items, design/interface surfaces, code-rigor constraints, work
-packages, verification, validation, and evidence. It is a control record, not an
-implementation claim. Implementation and executable evidence remain pending
-until the relevant work packages produce code, fixtures, build records, and
-retained outputs.
+packages, verification, validation, and evidence. The foundation implementation
+now has local executable evidence through KILN-WP-008. Downstream integrations
+remain fixture/mock/boundary-scoped.
 
 ## Requirement Trace Matrix
 
@@ -109,10 +108,10 @@ retained outputs.
 | Every accepted `KILN-SPEC-*` has a trace row. | pass | KILN-SPEC-001 through KILN-SPEC-012 covered. |
 | Every CONOPS scenario has validation coverage. | pass_with_risk | Coverage is planned; executable evidence pending. |
 | Every interface has verification coverage. | pass_with_risk | Covered in Verification; fixtures/code pending. |
-| Every work package maps to verification and validation closure. | pass_with_risk | Closure requires implementation work packages. |
-| Every evidence ID has a current status. | pass_with_risk | Most evidence is pending by design. |
-| Repo SHA closure exists. | gap | KILN is not yet a Git repository. |
-| Executable implementation evidence exists. | gap | Implementation remains blocked until Review and user approval. |
+| Every work package maps to verification and validation closure. | pass | Foundation work packages have local evidence closure. |
+| Every evidence ID has a current status. | pass_with_risk | Local evidence is recorded; real downstream integrations remain deferred. |
+| Repo SHA closure exists. | pass_with_risk | Local Git SHAs exist; remote/submodule snapshot remains future portfolio work. |
+| Executable implementation evidence exists. | pass | Cargo tests and CLI fixture commands pass locally. |
 
 ## Stage Review Ledger
 

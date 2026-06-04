@@ -9,10 +9,23 @@
 | Parent stages | `docs/vtrace/REQUIREMENTS.md`, `docs/vtrace/SPECIFICATION_BASELINE.md`, `docs/vtrace/INTERFACES.md`, `docs/vtrace/DESIGN.md`, `docs/vtrace/CODE_RIGOR.md`, `docs/vtrace/WORK_PACKAGES.md` |
 | Stage status | Role-reviewed fixed point |
 
-This plan defines how KILN will verify the first fixture-backed foundation
-checker. It does not claim executable evidence yet. KILN currently has no
-accepted implementation, so test results remain pending until the relevant work
-packages create code, fixtures, and retained outputs.
+This plan defines how KILN verifies the first fixture-backed foundation checker.
+KILN-WP-002 through KILN-WP-007 have now produced a std-only workspace,
+retained fixtures, parser, checker, emitter, and CLI. KILN-WP-008 records the
+executed evidence below.
+
+## Executed Evidence Summary
+
+| Evidence | Result |
+|---|---|
+| Input SHA | `d8e91ed` |
+| Output SHA | this commit |
+| `cargo fmt --check` | pass |
+| `cargo test --workspace` | pass; 11 unit tests plus doc tests |
+| CLI fixture exit codes | pass; `valid=0`, all nine non-ready/degraded fixtures exit `1` |
+| Build record output | pass; `target\kiln\valid.build.json` produced from explicit `--out` |
+| Code rigor search | pass; `unsafe` forbidden; `expect` appears only in tests |
+| `git diff --check` | pass |
 
 ## Verification Method Legend
 
@@ -187,11 +200,11 @@ git diff --check
 
 | Gap | Impact | Disposition |
 |---|---|---|
-| KILN is not yet a Git repository. | `git diff --check`, child repo SHA, commit, push, and submodule-pointer closure are unavailable. | Accept as pre-implementation process gap; resolve during repo initialization before code work package closure. |
-| No Rust workspace exists. | Cargo verification commands cannot run. | Expected until KILN-WP-002. |
-| No fixtures exist. | Fixture-based requirement/spec/interface verification cannot execute. | Expected until KILN-WP-003. |
-| Parser dependency decision is unresolved. | Dependency/supply-chain verification cannot close. | Resolve in KILN-WP-002 before parser code. |
-| `not_ready` partial build-record behavior is unresolved. | Build-record verification for not-ready cases is not final. | Resolve before KILN-WP-006. |
+| KILN Git repository was initialized during implementation. | SHA-based closure is now available locally; remote/submodule snapshot remains future portfolio work. | Resolved locally; push and TRACKER submodule update still required for portfolio snapshot. |
+| Rust workspace exists and validates. | Cargo verification commands run successfully. | Resolved in KILN-WP-002. |
+| Fixture matrix exists and validates. | Fixture-based requirement/spec/interface verification executes. | Resolved in KILN-WP-003. |
+| Parser dependency decision is resolved std-only. | Dependency/supply-chain verification can close for foundation slice. | Resolved in KILN-WP-002 and `docs/vtrace/DEPENDENCY_DECISION.md`. |
+| `not_ready` partial build-record behavior is resolved. | `not_ready` emits diagnostics-only JSON, not a partial build record. | Resolved in KILN-WP-006. |
 | Downstream repos CAL/WARDEN/DEPOT/GAUGE may not exist yet. | L2 integration evidence must remain fixture/mock/boundary-based. | Accept for first slice; record downstream integrations as later work. |
 
 ## Stage Review Ledger
