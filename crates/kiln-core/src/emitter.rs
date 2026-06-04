@@ -1,14 +1,14 @@
 use crate::{CheckReport, Diagnostic, Severity, Status};
 
 pub fn emit_json_report(report: &CheckReport) -> String {
-    if is_recordable(report) {
+    if can_emit_build_record(report) {
         emit_build_record(report)
     } else {
         emit_diagnostics_envelope(report)
     }
 }
 
-fn is_recordable(report: &CheckReport) -> bool {
+pub fn can_emit_build_record(report: &CheckReport) -> bool {
     report.status != Status::NotReady
         && report.declaration.kiln_version.is_some()
         && report.declaration.capability.is_some()

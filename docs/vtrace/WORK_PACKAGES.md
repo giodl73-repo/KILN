@@ -24,7 +24,7 @@ implementation.
 | KILN-WP-004 | Implement parser and normalization. | KILN-DES-002; KILN-DES-003; KILN-CR-001..KILN-CR-004 | parser/normalizer | WP-003 complete; parser dependency decided. | Valid/malformed fixtures parse or fail explicitly. | L0: parser tests; L1: workspace tests; L2: n/a | complete |
 | KILN-WP-005 | Implement check rules, statuses, and diagnostics. | KILN-REQ-003..KILN-REQ-005; KILN-IF-004; KILN-CR-005..KILN-CR-007 | checker, classifier, diagnostics | WP-004 complete. | Required diagnostics/statuses match fixture matrix. | L0: rule tests; L1: workspace tests; L2: review | complete |
 | KILN-WP-006 | Implement JSON build-record emitter. | KILN-REQ-006; KILN-IF-003; KILN-WAIVER-002 | build record emitter | WP-005 complete; `not_ready` record behavior decided. | JSON build records include required fields or fail visibly. | L0: snapshot tests; L1: workspace tests; L2: record inspection | complete |
-| KILN-WP-007 | Integrate `kiln check` CLI. | KILN-IF-002; KILN-CR-007; KILN-CR-009 | CLI, exit codes, file IO | WP-006 complete. | CLI validates fixtures, maps exit codes, and remains side-effect-free. | L0: CLI fixtures; L1: workspace tests; L2: side-effect review | proposed |
+| KILN-WP-007 | Integrate `kiln check` CLI. | KILN-IF-002; KILN-CR-007; KILN-CR-009 | CLI, exit codes, file IO | WP-006 complete. | CLI validates fixtures, maps exit codes, and remains side-effect-free. | L0: CLI fixtures; L1: workspace tests; L2: side-effect review | complete |
 | KILN-WP-008 | Close verification, validation, trace, and review evidence. | KILN-REQ-011; KILN-REQ-012; KILN-SPEC-010 | VTRACE proof package | WP-001..WP-007 complete. | Verification, Validation, Trace, and Review record evidence and decision. | L0: diff check; L1: full verification; L2: readiness review | proposed |
 
 ## Work Package Details
@@ -497,7 +497,18 @@ Validation levels:
 | L1 | yes | full command set and workspace tests | pending |
 | L2 | yes | side-effect and boundary review | pending |
 
-Status: proposed.
+Status: complete.
+
+Closure evidence:
+
+| Item | Result |
+|---|---|
+| Input SHA | `945a443` |
+| Output SHA | this commit |
+| CLI | `crates\kiln-cli\src\main.rs` implements `kiln check <path-to-kiln.yaml> [--format text\|json] [--out <build-record.json>]`. |
+| Exit codes | `0` ready; `1` degraded/not-ready; `2` usage/input/write error. |
+| Side effects | Reads named input; writes only explicit recordable `--out` output. |
+| Validation | `cargo fmt --check`; `cargo test --workspace`; documented CLI fixture commands; `git diff --check` pass. |
 
 ### KILN-WP-008: Proof package closure
 

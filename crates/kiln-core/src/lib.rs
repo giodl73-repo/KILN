@@ -7,7 +7,7 @@ mod parser;
 use std::fmt;
 
 pub use checker::check_declaration;
-pub use emitter::emit_json_report;
+pub use emitter::{can_emit_build_record, emit_json_report};
 pub use parser::parse_declaration_text;
 
 pub const KILN_VERSION: &str = "v0";
