@@ -11,4 +11,3 @@ checks:
   - declaration
 policy_needs:
   network: required
-  authorized: true

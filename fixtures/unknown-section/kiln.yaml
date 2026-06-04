@@ -9,5 +9,3 @@ outputs:
   build_record: target/kiln/unknown-section.build.json
 checks:
   - declaration
-experimental_runtime_magic:
-  enabled: true

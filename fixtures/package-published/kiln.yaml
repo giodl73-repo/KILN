@@ -12,5 +12,3 @@ checks:
 package:
   id: example.package
   version: 0.1.0
-  published: true
-  signed: true

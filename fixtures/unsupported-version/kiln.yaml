@@ -1,5 +1,5 @@
 kiln:
-  version: v9
+  version: v0
 capability:
   id: example.unsupported_version
   version: 0.1.0

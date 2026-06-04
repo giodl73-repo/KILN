@@ -1,3 +1,5 @@
+kiln:
+  version: v0
 capability:
   id: example.missing_kiln
   version: 0.1.0

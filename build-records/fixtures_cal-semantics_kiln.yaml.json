@@ -1,0 +1,1 @@
+{"kind":"build_record","kiln_version":"v0","capability":{"id":"example.cal_semantics","version":"0.1.0"},"status":"ready","checked_inputs":["fixtures/cal-semantics/input.txt"],"diagnostics":[],"unresolved_gates":["cal"],"evidence_obligations":["KILN-EVID-VER-004","KILN-EVID-VAL-010"],"handoffs":["cal"],"trace":[]}
