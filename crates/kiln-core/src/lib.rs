@@ -1,9 +1,11 @@
 #![forbid(unsafe_code)]
 
+mod checker;
 mod parser;
 
 use std::fmt;
 
+pub use checker::check_declaration;
 pub use parser::parse_declaration_text;
 
 pub const KILN_VERSION: &str = "v0";
@@ -119,7 +121,9 @@ impl fmt::Display for Status {
 
 #[cfg(test)]
 mod tests {
-    use super::{parse_declaration_text, DiagnosticCategory, Status, KILN_VERSION};
+    use super::{
+        check_declaration, parse_declaration_text, DiagnosticCategory, Status, KILN_VERSION,
+    };
 
     #[test]
     fn exposes_v0_foundation_version() {
@@ -213,6 +217,73 @@ mod tests {
             .fields
             .iter()
             .any(|field| field.path == "policy_needs.authorized" && field.value == "true"));
+    }
+
+    #[test]
+    fn fixture_statuses_match_code_rigor_matrix() {
+        let cases = [
+            ("valid", Status::Ready, None),
+            (
+                "missing-kiln",
+                Status::NotReady,
+                Some(DiagnosticCategory::MissingRequired),
+            ),
+            (
+                "unsupported-version",
+                Status::NotReady,
+                Some(DiagnosticCategory::UnsupportedVersion),
+            ),
+            (
+                "missing-capability",
+                Status::NotReady,
+                Some(DiagnosticCategory::MissingRequired),
+            ),
+            (
+                "unknown-section",
+                Status::Degraded,
+                Some(DiagnosticCategory::UnsupportedHandoff),
+            ),
+            (
+                "policy-authorized",
+                Status::NotReady,
+                Some(DiagnosticCategory::PolicyUnresolved),
+            ),
+            (
+                "package-published",
+                Status::NotReady,
+                Some(DiagnosticCategory::PackageNotReady),
+            ),
+            (
+                "cal-semantics",
+                Status::NotReady,
+                Some(DiagnosticCategory::BoundaryViolation),
+            ),
+            (
+                "runtime-hidden-gates",
+                Status::NotReady,
+                Some(DiagnosticCategory::RuntimeNotReady),
+            ),
+            (
+                "enterprise-required",
+                Status::NotReady,
+                Some(DiagnosticCategory::BoundaryViolation),
+            ),
+        ];
+
+        for (fixture, status, diagnostic) in cases {
+            let declaration = parse_declaration_text(&fixture_text(fixture));
+            let report = check_declaration(declaration);
+            assert_eq!(report.status, status, "{fixture}");
+            if let Some(category) = diagnostic {
+                assert!(
+                    report
+                        .diagnostics
+                        .iter()
+                        .any(|item| item.category == category),
+                    "{fixture} missing {category:?}"
+                );
+            }
+        }
     }
 
     fn fixture_text(name: &str) -> String {
