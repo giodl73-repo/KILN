@@ -9,3 +9,5 @@ outputs:
   build_record: target/kiln/enterprise-required.build.json
 checks:
   - declaration
+enterprise:
+  required: fletcher

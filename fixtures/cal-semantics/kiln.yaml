@@ -11,3 +11,4 @@ checks:
   - declaration
 cal_refs:
   primitive: file.read
+  behavior: KILN defines how file.read works.

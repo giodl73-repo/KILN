@@ -1,7 +1,6 @@
 kiln:
   version: v0
 capability:
-  id: example.missing_capability
   version: 0.1.0
 inputs:
   - fixtures/missing-capability/input.txt

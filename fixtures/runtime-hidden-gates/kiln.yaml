@@ -11,4 +11,4 @@ checks:
   - declaration
 runtime:
   target: arcade
-  hides_unresolved_gates: false
+  hides_unresolved_gates: true
