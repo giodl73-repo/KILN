@@ -1,0 +1,14 @@
+[workspace]
+members = [
+    "crates/kiln-core",
+    "crates/kiln-cli",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/giodl73-repo/KILN"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"

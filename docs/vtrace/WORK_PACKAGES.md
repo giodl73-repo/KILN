@@ -19,7 +19,7 @@ implementation.
 | ID | Objective | Parent IDs | Affected Surfaces | Entry Criteria | Exit Criteria | L0 / L1 / L2 | Status |
 |---|---|---|---|---|---|---|---|
 | KILN-WP-001 | Reconcile pre-VTRACE docs with the accepted VTRACE baseline. | KILN-DES-010; KILN-UNK-005; KILN-RISK-001 | README, PRODUCT_PLAN, wave/pulse docs | VTRACE baseline through Implementation Plan accepted. | No doc claims crates/CLI/fixtures are accepted behavior before work packages. | L0: `git diff --check`; L1: role review; L2: n/a | complete |
-| KILN-WP-002 | Establish Rust workspace shape and dependency decision. | KILN-CR-010; KILN-CR-011; KILN-WAIVER-001 | Cargo workspace, dependency notes | WP-001 complete; dependency decision recorded. | Workspace validates; dependency posture has review evidence. | L0: fmt/check; L1: tests/dependency inspection; L2: n/a | proposed |
+| KILN-WP-002 | Establish Rust workspace shape and dependency decision. | KILN-CR-010; KILN-CR-011; KILN-WAIVER-001 | Cargo workspace, dependency notes | WP-001 complete; dependency decision recorded. | Workspace validates; dependency posture has review evidence. | L0: fmt/check; L1: tests/dependency inspection; L2: n/a | complete |
 | KILN-WP-003 | Create declaration model and retained fixture matrix. | KILN-IF-001; KILN-FIX-001..KILN-FIX-010 | core model, fixtures | WP-002 complete; fixture schema target accepted. | All required fixtures exist and are documented. | L0: fixture inventory; L1: tests; L2: trace review | proposed |
 | KILN-WP-004 | Implement parser and normalization. | KILN-DES-002; KILN-DES-003; KILN-CR-001..KILN-CR-004 | parser/normalizer | WP-003 complete; parser dependency decided. | Valid/malformed fixtures parse or fail explicitly. | L0: parser tests; L1: workspace tests; L2: n/a | proposed |
 | KILN-WP-005 | Implement check rules, statuses, and diagnostics. | KILN-REQ-003..KILN-REQ-005; KILN-IF-004; KILN-CR-005..KILN-CR-007 | checker, classifier, diagnostics | WP-004 complete. | Required diagnostics/statuses match fixture matrix. | L0: rule tests; L1: workspace tests; L2: review | proposed |
@@ -188,7 +188,17 @@ Validation levels:
 | L1 | yes | `cargo test --workspace`; dependency inspection | pending |
 | L2 | no | No downstream integration | n/a |
 
-Status: proposed.
+Status: complete.
+
+Closure evidence:
+
+| Item | Result |
+|---|---|
+| Input SHA | `28213a6` |
+| Output SHA | this commit |
+| Dependency decision | std-only foundation workspace; no non-std dependency accepted. |
+| Evidence pointer | `docs/vtrace/DEPENDENCY_DECISION.md` |
+| Validation | `cargo fmt --check`; `cargo test --workspace`; `git diff --check` pass. |
 
 ### KILN-WP-003: Declaration model and fixtures
 
