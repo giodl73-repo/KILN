@@ -1,1 +1,0 @@
-{"kind":"build_record","kiln_version":"v0","capability":{"id":"example.policy_authorized","version":"0.1.0"},"status":"ready","checked_inputs":["fixtures/policy-authorized/input.txt"],"diagnostics":[],"unresolved_gates":["policy"],"evidence_obligations":["KILN-EVID-VER-004","KILN-EVID-VAL-010"],"handoffs":["policy"],"trace":[]}

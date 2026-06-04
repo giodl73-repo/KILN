@@ -1,0 +1,1 @@
+{"kind":"diagnostics","status":"not_ready","diagnostics":[{"category":"missing_required","severity":"error","field":"capability.id","message":"capability.id is required","trace":["KILN-REQ-004"]}],"unresolved_gates":[],"evidence_obligations":["KILN-EVID-VER-004","KILN-EVID-VAL-010"],"trace":["KILN-REQ-004"]}

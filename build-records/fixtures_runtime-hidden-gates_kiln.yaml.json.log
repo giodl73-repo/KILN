@@ -1,0 +1,1 @@
+{"kind":"diagnostics","status":"not_ready","diagnostics":[{"category":"runtime_not_ready","severity":"error","field":"runtime.hides_unresolved_gates","message":"runtime handoffs must not hide unresolved gates","trace":["KILN-REQ-006"]}],"unresolved_gates":["runtime"],"evidence_obligations":["KILN-EVID-VER-004","KILN-EVID-VAL-010"],"trace":["KILN-REQ-006"]}
