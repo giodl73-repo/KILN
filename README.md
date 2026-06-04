@@ -1,18 +1,17 @@
 # KILN
 
-**A public build and validation pipeline for managed agent work.**
+**A public build/check/package contract for managed-agent work.**
 
-KILN is the MSBuild-style layer in the managed-agent stack. It turns stable
-agent-facing inputs such as AgentMaps, workflow specs, policy requirements,
-tool declarations, context obligations, and package metadata into checked,
-versioned build records before any runtime executes them.
+KILN is the MSBuild-style layer in the managed-agent stack. It is public,
+product-neutral infrastructure for checking declared managed-agent capabilities
+before runtime, registry, policy, conformance, or review systems consume them.
+The accepted source of truth is the VTRACE package under `docs\vtrace`.
 
 ```text
-AgentMap / workflow / policy / package inputs
-  -> KILN check
-  -> build plan
-  -> validation gates
-  -> package manifest
+declared managed-agent capability inputs
+  -> side-effect-free KILN check
+  -> diagnostics and evidence obligations
+  -> build record
   -> runtime handoff
 ```
 
@@ -42,23 +41,26 @@ Agents need a repeatable build step before they do real work. KILN answers:
   consume KILN records later.
 - Not tied to one provider, host, workflow language, or product vocabulary.
 
-## Foundation crates
+## Planned foundation surfaces
 
-| Crate | Purpose |
+The first controlled implementation slice is defined by
+`docs\vtrace\WORK_PACKAGES.md` and must start with KILN-WP-001 before code.
+
+| Planned surface | Purpose |
 |---|---|
-| `kiln-core` | Product-neutral build record, diagnostics, and fixture check types. |
-| `kiln-cli` | Fixture-backed `status` and `check` commands for the foundation slice. |
+| `kiln-core` | Product-neutral declaration, diagnostic, status, and build-record logic. |
+| `kiln-cli` | Side-effect-free `kiln check <path-to-kiln.yaml>` command. |
+| `fixtures\` | Retained valid, invalid, degraded, and boundary scenarios. |
 
-## Current CLI surface
+## Target CLI surface
 
 ```powershell
-cargo run -p kiln-cli -- status
-cargo run -p kiln-cli -- check fixtures\tiny\kiln.yaml
+cargo run -q -p kiln-cli -- check fixtures\valid\kiln.yaml --format json --out target\kiln\valid.build.json
 ```
 
-The foundation checker is intentionally narrow. It validates that a KILN fixture
-declares the minimum build-record sections without parsing or executing any
-domain-specific language.
+This command is target behavior, not evidence of current implementation. The
+foundation checker must remain local-file-only and side-effect-free except for an
+explicit `--out` path.
 
 ## Placement in the managed-agent stack
 
@@ -76,12 +78,15 @@ RUNE supplies Rust-neutral contract descriptors. KILN records how declared
 capabilities are checked and packaged. CAL, WARDEN, DEPOT, GAUGE, and Workbench
 should remain separate repos only when their boundaries become real.
 
-## Validation
+## Validation posture
 
 ```powershell
 cargo fmt --check
 cargo test --workspace
-cargo run -q -p kiln-cli -- status
-cargo run -q -p kiln-cli -- check fixtures\tiny\kiln.yaml
+cargo run -q -p kiln-cli -- check fixtures\valid\kiln.yaml --format json --out target\kiln\valid.build.json
 git diff --check
 ```
+
+These commands become required as the matching work packages create the
+workspace, fixtures, parser, checker, emitter, and CLI. Until then, VTRACE docs
+record planned evidence and accepted risks.

@@ -18,7 +18,7 @@ implementation.
 
 | ID | Objective | Parent IDs | Affected Surfaces | Entry Criteria | Exit Criteria | L0 / L1 / L2 | Status |
 |---|---|---|---|---|---|---|---|
-| KILN-WP-001 | Reconcile pre-VTRACE docs with the accepted VTRACE baseline. | KILN-DES-010; KILN-UNK-005; KILN-RISK-001 | README, PRODUCT_PLAN, wave/pulse docs | VTRACE baseline through Implementation Plan accepted. | No doc claims crates/CLI/fixtures are accepted behavior before work packages. | L0: `git diff --check`; L1: role review; L2: n/a | proposed |
+| KILN-WP-001 | Reconcile pre-VTRACE docs with the accepted VTRACE baseline. | KILN-DES-010; KILN-UNK-005; KILN-RISK-001 | README, PRODUCT_PLAN, wave/pulse docs | VTRACE baseline through Implementation Plan accepted. | No doc claims crates/CLI/fixtures are accepted behavior before work packages. | L0: `git diff --check`; L1: role review; L2: n/a | complete |
 | KILN-WP-002 | Establish Rust workspace shape and dependency decision. | KILN-CR-010; KILN-CR-011; KILN-WAIVER-001 | Cargo workspace, dependency notes | WP-001 complete; dependency decision recorded. | Workspace validates; dependency posture has review evidence. | L0: fmt/check; L1: tests/dependency inspection; L2: n/a | proposed |
 | KILN-WP-003 | Create declaration model and retained fixture matrix. | KILN-IF-001; KILN-FIX-001..KILN-FIX-010 | core model, fixtures | WP-002 complete; fixture schema target accepted. | All required fixtures exist and are documented. | L0: fixture inventory; L1: tests; L2: trace review | proposed |
 | KILN-WP-004 | Implement parser and normalization. | KILN-DES-002; KILN-DES-003; KILN-CR-001..KILN-CR-004 | parser/normalizer | WP-003 complete; parser dependency decided. | Valid/malformed fixtures parse or fail explicitly. | L0: parser tests; L1: workspace tests; L2: n/a | proposed |
@@ -73,37 +73,37 @@ Validation levels:
 
 | Level | Required | Commands / Evidence | Result |
 |---|---|---|---|
-| L0 | yes | `git diff --check` | pending |
-| L1 | yes | Role review against VTRACE baseline | pending |
+| L0 | yes | `git diff --check` | pass |
+| L1 | yes | Role review against VTRACE baseline | pass |
 | L2 | no | Not required for doc reconciliation | n/a |
 
 V closure:
 
 | V Area | IDs / Evidence | Status | Notes |
 |---|---|---|---|
-| Need / CONOPS | KILN-NEED-001; KILN-CONOPS-001 | pending | Keeps docs aligned with public build/check mission. |
-| Requirements | KILN-REQ-011; KILN-REQ-012 | pending | Missing evidence and trace clarity. |
-| Specification | KILN-SPEC-001; KILN-SPEC-010 | pending | Public contract and trace continuity. |
-| Architecture / Interface | KILN-ARCH-001 | pending | VTRACE control package only. |
-| Design / Code Rigor | KILN-DES-010 | pending | No code. |
-| Implementation | docs only | pending | No code. |
-| Verification | `git diff --check` | pending | Metadata-only verification. |
-| Validation | maintainer review | pending | Docs no longer mislead. |
-| Trace | TRACE rows planned | pending | Add after Trace stage. |
-| Gate | REVIEW planned | pending | Final readiness later. |
+| Need / CONOPS | KILN-NEED-001; KILN-CONOPS-001 | pass | Docs align with public build/check mission. |
+| Requirements | KILN-REQ-011; KILN-REQ-012 | pass | Missing evidence remains explicit and traceable. |
+| Specification | KILN-SPEC-001; KILN-SPEC-010 | pass | Public contract and trace continuity preserved. |
+| Architecture / Interface | KILN-ARCH-001 | pass | VTRACE control package only. |
+| Design / Code Rigor | KILN-DES-010 | pass | No code. |
+| Implementation | docs only | pass | No code. |
+| Verification | `git diff --check` | pass | Metadata-only verification. |
+| Validation | maintainer review | pass | Docs no longer mislead. |
+| Trace | TRACE rows | pass | Work package status and evidence updated. |
+| Gate | REVIEW | pass | WP-001 authorized as first package. |
 
 Assurance/security classification:
 
 | Lane | Required | Reviewer / Role | Decision | Evidence / Rationale |
 |---|---|---|---|---|
-| Systems engineering | yes | Systems Engineering Steward | pending | Avoid source-of-truth drift. |
-| Requirements traceability | yes | Requirements Traceability Auditor | pending | Preserve trace links. |
-| V&V | yes | Verification and Validation Lead | pending | Avoid unproven implementation claims. |
+| Systems engineering | yes | Systems Engineering Steward | pass | Avoided source-of-truth drift. |
+| Requirements traceability | yes | Requirements Traceability Auditor | pass | Preserved trace links. |
+| V&V | yes | Verification and Validation Lead | pass | Removed unproven implementation claims. |
 | Software assurance | no | Software Assurance Guardian | not_required | Docs only. |
 | Security/privacy | no | Security Privacy Guardian | not_required | No implementation or data handling. |
 | Safety/mission impact | no | Systems Engineering Steward | not_required | No high-consequence runtime impact. |
-| Source custody | yes | Source Custody Counsel | pending | .NET/MSBuild analogy remains analogy. |
-| Configuration/change control | yes | Future Agent | pending | Stabilize baseline docs. |
+| Source custody | yes | Source Custody Counsel | pass | .NET/MSBuild analogy remains analogy. |
+| Configuration/change control | yes | Future Agent | pass | Stabilized baseline docs. |
 
 Review gate: pass required before code work packages.
 
@@ -127,7 +127,16 @@ Boundary control:
 |---|---|---|---|
 | KILN-ARCH-001 | Docs and wave text. | Code, fixtures, Cargo files. | no |
 
-Status: proposed.
+Status: complete.
+
+Closure evidence:
+
+| Item | Result |
+|---|---|
+| Input SHA | `954c05b` |
+| Output SHA | this commit |
+| Files reconciled | `README.md`, `PRODUCT_PLAN.md`, `context/waves/PHASES.md`, `context/waves/2026-06-03-foundation/WAVE.md`, `context/waves/2026-06-03-foundation/pulses/pulse-01.md` |
+| Role review | No unresolved critical/major findings; docs now point to VTRACE and work packages instead of claiming old `status`/`fixtures\tiny` behavior. |
 
 ### KILN-WP-002: Foundation workspace and dependency decision
 

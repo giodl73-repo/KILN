@@ -6,20 +6,20 @@ Work is organized into small waves and pulses.
 
 | Wave | Status | Purpose |
 |---|---|---|
-| `2026-06-03-foundation` | active | Establish KILN as a public build/check/package contract repo with a fixture-backed CLI. |
+| `2026-06-03-foundation` | active | Establish KILN's VTRACE-controlled public build/check/package contract and then execute the foundation work packages. |
 
 ## Wave registry
 
 | Wave | Status | Purpose |
 |---|---|---|
-| `2026-06-03-foundation` | active | Establish public repo scaffold, product-neutral model, fixture-backed CLI, wave docs, and validation commands. |
+| `2026-06-03-foundation` | active | Establish VTRACE baseline, product-neutral model, fixture-backed CLI, wave docs, and validation commands. |
 
 ## Protocol
 
 1. Read this file.
 2. Read the active wave `WAVE.md`.
 3. Read the target pulse under `pulses/`.
-4. Confirm the pulse names allowed files and validation commands.
+4. Confirm the VTRACE work package names allowed files and validation commands.
 5. Implement the smallest complete work-package slice.
 6. Keep KILN product-neutral and free of enterprise-only dependencies.
 7. Update docs and wave/pulse status.
@@ -31,7 +31,6 @@ Work is organized into small waves and pulses.
 ```powershell
 cargo fmt --check
 cargo test --workspace
-cargo run -q -p kiln-cli -- status
-cargo run -q -p kiln-cli -- check fixtures\tiny\kiln.yaml
+cargo run -q -p kiln-cli -- check fixtures\valid\kiln.yaml --format json --out target\kiln\valid.build.json
 git diff --check
 ```
