@@ -127,14 +127,16 @@ Required target fields:
 
 Inputs: Checked declaration model and diagnostics.
 
-Outputs: JSON build record.
+Outputs: JSON build record for `ready` and `degraded` declarations with known
+KILN version and capability identity. `not_ready` or identity-missing
+declarations emit a diagnostics-only JSON envelope, not a partial build record.
 
 Errors: Record cannot be emitted if declaration identity or version is unknown.
 
 Versioning or compatibility: Fields may be added in `v0`; removing required
 fields requires interface review.
 
-Evidence: Future build-record fixture inspection.
+Evidence: Build-record and diagnostics-envelope fixture inspection.
 
 ### KILN-IF-004: Diagnostic record
 

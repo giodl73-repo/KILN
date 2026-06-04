@@ -54,7 +54,7 @@ before code is accepted.
 | ID | Constraint | Exception | Rationale | Owner | Revisit Trigger |
 |---|---|---|---|---|---|
 | KILN-WAIVER-001 | KILN-CR-011 | Parser/serialization dependency may be proposed. | YAML/JSON correctness may be safer with mature public crates than hand parsing. | KILN | Before first implementation work package adds dependencies. |
-| KILN-WAIVER-002 | KILN-CR-008 | `not_ready` partial build record is unresolved. | Interfaces left this open; implementation plan must decide before emitter code. | KILN | Before build-record emitter work package. |
+| KILN-WAIVER-002 | KILN-CR-008 | resolved: `not_ready` emits diagnostics-only JSON, not a partial build record. | Missing identity/version cannot satisfy required build-record fields. | KILN | Reopen only if a later interface version adds an explicit partial-record schema. |
 
 No waiver is currently accepted. The table records possible future waiver topics
 that require explicit work-package approval.
@@ -104,7 +104,9 @@ Decision: pass_with_risk.
 Rationale: Code rigor is specific enough to proceed to Implementation Planning.
 The accepted risks are unresolved dependency choice and the `not_ready` build
 record question. Both must be resolved or explicitly waived in work packages
-before implementation touches parser, serializer, or emitter code.
+before implementation touches parser or serializer code. The build-record emitter
+question is resolved for the foundation slice by using diagnostics-only JSON for
+`not_ready` cases.
 
 ## Source Links
 

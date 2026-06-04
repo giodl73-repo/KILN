@@ -23,7 +23,7 @@ implementation.
 | KILN-WP-003 | Create declaration model and retained fixture matrix. | KILN-IF-001; KILN-FIX-001..KILN-FIX-010 | core model, fixtures | WP-002 complete; fixture schema target accepted. | All required fixtures exist and are documented. | L0: fixture inventory; L1: tests; L2: trace review | complete |
 | KILN-WP-004 | Implement parser and normalization. | KILN-DES-002; KILN-DES-003; KILN-CR-001..KILN-CR-004 | parser/normalizer | WP-003 complete; parser dependency decided. | Valid/malformed fixtures parse or fail explicitly. | L0: parser tests; L1: workspace tests; L2: n/a | complete |
 | KILN-WP-005 | Implement check rules, statuses, and diagnostics. | KILN-REQ-003..KILN-REQ-005; KILN-IF-004; KILN-CR-005..KILN-CR-007 | checker, classifier, diagnostics | WP-004 complete. | Required diagnostics/statuses match fixture matrix. | L0: rule tests; L1: workspace tests; L2: review | complete |
-| KILN-WP-006 | Implement JSON build-record emitter. | KILN-REQ-006; KILN-IF-003; KILN-WAIVER-002 | build record emitter | WP-005 complete; `not_ready` record behavior decided. | JSON build records include required fields or fail visibly. | L0: snapshot tests; L1: workspace tests; L2: record inspection | proposed |
+| KILN-WP-006 | Implement JSON build-record emitter. | KILN-REQ-006; KILN-IF-003; KILN-WAIVER-002 | build record emitter | WP-005 complete; `not_ready` record behavior decided. | JSON build records include required fields or fail visibly. | L0: snapshot tests; L1: workspace tests; L2: record inspection | complete |
 | KILN-WP-007 | Integrate `kiln check` CLI. | KILN-IF-002; KILN-CR-007; KILN-CR-009 | CLI, exit codes, file IO | WP-006 complete. | CLI validates fixtures, maps exit codes, and remains side-effect-free. | L0: CLI fixtures; L1: workspace tests; L2: side-effect review | proposed |
 | KILN-WP-008 | Close verification, validation, trace, and review evidence. | KILN-REQ-011; KILN-REQ-012; KILN-SPEC-010 | VTRACE proof package | WP-001..WP-007 complete. | Verification, Validation, Trace, and Review record evidence and decision. | L0: diff check; L1: full verification; L2: readiness review | proposed |
 
@@ -432,7 +432,17 @@ Validation levels:
 | L1 | yes | `cargo test --workspace`; record inspection | pending |
 | L2 | yes | mock runtime/review record inspection | pending |
 
-Status: proposed.
+Status: complete.
+
+Closure evidence:
+
+| Item | Result |
+|---|---|
+| Input SHA | `f44196a` |
+| Output SHA | this commit |
+| Emitter | `crates\kiln-core\src\emitter.rs` std-only JSON emitter. |
+| `not_ready` decision | Diagnostics-only JSON envelope; no partial build record. |
+| Validation | `cargo fmt --check`; `cargo test --workspace`; `git diff --check` pass. |
 
 ### KILN-WP-007: CLI integration
 

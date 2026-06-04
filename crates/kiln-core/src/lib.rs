@@ -1,11 +1,13 @@
 #![forbid(unsafe_code)]
 
 mod checker;
+mod emitter;
 mod parser;
 
 use std::fmt;
 
 pub use checker::check_declaration;
+pub use emitter::emit_json_report;
 pub use parser::parse_declaration_text;
 
 pub const KILN_VERSION: &str = "v0";
@@ -122,7 +124,8 @@ impl fmt::Display for Status {
 #[cfg(test)]
 mod tests {
     use super::{
-        check_declaration, parse_declaration_text, DiagnosticCategory, Status, KILN_VERSION,
+        check_declaration, emit_json_report, parse_declaration_text, DiagnosticCategory, Status,
+        KILN_VERSION,
     };
 
     #[test]
@@ -284,6 +287,39 @@ mod tests {
                 );
             }
         }
+    }
+
+    #[test]
+    fn valid_fixture_emits_build_record_json() {
+        let declaration = parse_declaration_text(&fixture_text("valid"));
+        let report = check_declaration(declaration);
+        let json = emit_json_report(&report);
+
+        assert!(json.contains("\"kind\":\"build_record\""));
+        assert!(json.contains("\"status\":\"ready\""));
+        assert!(json.contains("\"capability\""));
+    }
+
+    #[test]
+    fn missing_identity_emits_diagnostics_json() {
+        let declaration = parse_declaration_text(&fixture_text("missing-kiln"));
+        let report = check_declaration(declaration);
+        let json = emit_json_report(&report);
+
+        assert!(json.contains("\"kind\":\"diagnostics\""));
+        assert!(json.contains("\"status\":\"not_ready\""));
+        assert!(!json.contains("\"kind\":\"build_record\""));
+    }
+
+    #[test]
+    fn degraded_fixture_is_recordable() {
+        let declaration = parse_declaration_text(&fixture_text("unknown-section"));
+        let report = check_declaration(declaration);
+        let json = emit_json_report(&report);
+
+        assert_eq!(report.status, Status::Degraded);
+        assert!(json.contains("\"kind\":\"build_record\""));
+        assert!(json.contains("\"status\":\"degraded\""));
     }
 
     fn fixture_text(name: &str) -> String {
