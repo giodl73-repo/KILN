@@ -1,0 +1,14 @@
+kiln:
+  version: v0
+capability:
+  id: example.cal_semantics
+  version: 0.1.0
+inputs:
+  - fixtures/cal-semantics/input.txt
+outputs:
+  build_record: target/kiln/cal-semantics.build.json
+checks:
+  - declaration
+cal_refs:
+  primitive: file.read
+  behavior: KILN defines how file.read works.

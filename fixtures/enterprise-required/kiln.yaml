@@ -1,0 +1,13 @@
+kiln:
+  version: v0
+capability:
+  id: example.enterprise_required
+  version: 0.1.0
+inputs:
+  - fixtures/enterprise-required/input.txt
+outputs:
+  build_record: target/kiln/enterprise-required.build.json
+checks:
+  - declaration
+enterprise:
+  required: fletcher

@@ -1,0 +1,13 @@
+kiln:
+  version: v0
+capability:
+  id: example.unknown_section
+  version: 0.1.0
+inputs:
+  - fixtures/unknown-section/input.txt
+outputs:
+  build_record: target/kiln/unknown-section.build.json
+checks:
+  - declaration
+experimental_runtime_magic:
+  enabled: true

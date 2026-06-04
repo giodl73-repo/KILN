@@ -1,0 +1,14 @@
+kiln:
+  version: v0
+capability:
+  id: example.runtime_hidden_gates
+  version: 0.1.0
+inputs:
+  - fixtures/runtime-hidden-gates/input.txt
+outputs:
+  build_record: target/kiln/runtime-hidden-gates.build.json
+checks:
+  - declaration
+runtime:
+  target: arcade
+  hides_unresolved_gates: true

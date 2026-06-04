@@ -1,0 +1,11 @@
+kiln:
+  version: v9
+capability:
+  id: example.unsupported_version
+  version: 0.1.0
+inputs:
+  - fixtures/unsupported-version/input.txt
+outputs:
+  build_record: target/kiln/unsupported-version.build.json
+checks:
+  - declaration

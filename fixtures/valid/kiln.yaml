@@ -1,0 +1,16 @@
+kiln:
+  version: v0
+capability:
+  id: example.echo
+  version: 0.1.0
+  summary: Minimal valid KILN declaration.
+  owner: public
+inputs:
+  - fixtures/valid/input.txt
+outputs:
+  build_record: target/kiln/valid.build.json
+checks:
+  - declaration
+  - evidence
+review:
+  consumers: public

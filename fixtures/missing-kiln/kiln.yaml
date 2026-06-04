@@ -1,0 +1,9 @@
+capability:
+  id: example.missing_kiln
+  version: 0.1.0
+inputs:
+  - fixtures/missing-kiln/input.txt
+outputs:
+  build_record: target/kiln/missing-kiln.build.json
+checks:
+  - declaration

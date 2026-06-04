@@ -1,0 +1,16 @@
+kiln:
+  version: v0
+capability:
+  id: example.package_published
+  version: 0.1.0
+inputs:
+  - fixtures/package-published/input.txt
+outputs:
+  build_record: target/kiln/package-published.build.json
+checks:
+  - declaration
+package:
+  id: example.package
+  version: 0.1.0
+  published: true
+  signed: true

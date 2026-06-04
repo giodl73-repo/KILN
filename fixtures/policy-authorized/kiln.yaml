@@ -1,0 +1,14 @@
+kiln:
+  version: v0
+capability:
+  id: example.policy_authorized
+  version: 0.1.0
+inputs:
+  - fixtures/policy-authorized/input.txt
+outputs:
+  build_record: target/kiln/policy-authorized.build.json
+checks:
+  - declaration
+policy_needs:
+  network: required
+  authorized: true
