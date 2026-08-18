@@ -52,15 +52,14 @@ The first controlled implementation slice is defined by
 | `kiln-cli` | Side-effect-free `kiln check <path-to-kiln.yaml>` command. |
 | `fixtures\` | Retained valid, invalid, degraded, and boundary scenarios. |
 
-## Target CLI surface
+## CLI surface
 
 ```powershell
 cargo run -q -p kiln-cli -- check fixtures\valid\kiln.yaml --format json --out target\kiln\valid.build.json
 ```
 
-This command is target behavior, not evidence of current implementation. The
-foundation checker must remain local-file-only and side-effect-free except for an
-explicit `--out` path.
+The checker remains local-file-only and side-effect-free except for an explicit
+`--out` path.
 
 ## Placement in the managed-agent stack
 
@@ -88,5 +87,19 @@ git diff --check
 ```
 
 These commands become required as the matching work packages create the
-workspace, fixtures, parser, checker, emitter, and CLI. Until then, VTRACE docs
-record planned evidence and accepted risks.
+workspace, fixtures, parser, checker, emitter, and CLI.
+
+### Retained readiness proof
+
+The focused fixture matrix records both an accepted declaration and a
+structured unsupported-version rejection:
+
+```powershell
+cargo test -p kiln-core fixture_statuses_match_code_rigor_matrix
+cargo run -q -p kiln-cli -- check fixtures\valid\kiln.yaml --format json
+cargo run -q -p kiln-cli -- check fixtures\unsupported-version\kiln.yaml --format json
+```
+
+The valid fixture reports `ready`. The rejected fixture reports `not_ready`
+with an `unsupported_version` diagnostic; unsupported contracts are not
+silently accepted.
