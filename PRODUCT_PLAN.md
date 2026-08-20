@@ -50,7 +50,7 @@ The exact fields, fixtures, commands, and evidence are controlled by
 | CAL | Standard primitives that KILN can require without hard-coding product workflows. |
 | ARCADE | Runtime plans that only execute after KILN check gates pass. |
 | BAKER | Incubation specs that can point to a public build/check layer instead of owning every implementation. |
-| FLETCHER | Review/debug surfaces for checked build records and runtime handoffs. |
+| WITNESS | Review/debug surfaces for checked build records and runtime handoffs. |
 | GAUGE | Conformance fixtures and pass/fail records for managed-agent builds. |
 
 ## Wave plan

@@ -49,7 +49,7 @@ KILN records, but KILN must not depend on enterprise-only systems.
 | Package/registry authors | Stable metadata that can become DEPOT-ready without making KILN own registry operation or trust service behavior. | Package handoff is a mission need with registry mutation explicitly out of scope. |
 | Policy authors | Policy needs that can be handed to WARDEN without KILN making authorization decisions. | Policy decision ownership is separated from build/check ownership. |
 | CAL authors | A clear boundary between common agent primitives and KILN build records. | Common library scope is assigned to CAL, not absorbed into KILN. |
-| Enterprise review clients | A public build/check record they can display or review without KILN depending on enterprise-only repos. | FLETCHER or Workbench-style usage is listed as future consumption, not a KILN dependency. |
+| Enterprise review clients | A public build/check record they can display or review without KILN depending on enterprise-only repos. | WITNESS or Workbench-style usage is listed as future consumption, not a KILN dependency. |
 | Future agents | Stable mission, trace, review, and evidence records that let work resume without chat history. | Missing evidence and deferred stages are named in VTRACE artifacts. |
 
 ## Operating Context
@@ -70,7 +70,7 @@ KILN is adjacent to, but distinct from:
 | GAUGE | Planned conformance and bakeoff layer; KILN should eventually produce evidence GAUGE can test. |
 | ARCADE | Runtime consumer candidate; KILN should not execute workflows itself. |
 | BAKER | Enterprise incubation umbrella that may cite KILN as the public build/check layer. |
-| LATTICE / FLETCHER | Enterprise consumers or review surfaces; KILN must not depend on them. |
+| LATTICE / WITNESS | Enterprise consumers or review surfaces; KILN must not depend on them. |
 
 ## Constraints
 
@@ -107,7 +107,7 @@ KILN is adjacent to, but distinct from:
 | Criterion | Validation Method | Evidence Pointer |
 |---|---|---|
 | KILN has a clear public mission distinct from enterprise incubation. | Role review by Systems Engineering Steward and Source Custody Counsel. | This file, `.roles/ROLE.md`, TRACKER managed-agent roadmap. |
-| KILN's build/check/package boundary is distinct from CAL, WARDEN, DEPOT, GAUGE, ARCADE, Workbench, LATTICE, and FLETCHER. | Role review by Systems Engineering Steward, Repo Maintainer, and Future Agent. | This file's Operating Context, Constraints, and Non-Goals sections. |
+| KILN's build/check/package boundary is distinct from CAL, WARDEN, DEPOT, GAUGE, ARCADE, Workbench, LATTICE, and WITNESS. | Role review by Systems Engineering Steward, Repo Maintainer, and Future Agent. | This file's Operating Context, Constraints, and Non-Goals sections. |
 | Mission claims are phrased as needs and future evidence obligations, not implementation readiness. | Role review by Verification and Validation Lead and Software Assurance Guardian. | This file's Scope, Constraints, and Success Criteria sections. |
 | Candidate users and consumers are named without claiming adoption. | Role review by Requirements Traceability Auditor. | This file's Users and Operating Context sections. |
 | The next VTRACE stage is clear. | Inspection against VTRACE process order. | Next stage: `docs/vtrace/CONOPS.md`. |

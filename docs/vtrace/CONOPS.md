@@ -44,7 +44,7 @@ functions, or display an enterprise review experience.
 | Package/registry owner | Uses KILN metadata as input to DEPOT-style package or capability publication. | Package metadata that is checkable without KILN mutating registries or signing trust decisions. |
 | CAL owner | Defines common agent primitives that KILN declarations may reference later. | KILN must not hard-code or duplicate common library semantics. |
 | Conformance reviewer | Uses KILN records as evidence for GAUGE-style bakeoffs or compatibility checks. | Stable pass/fail/degraded records and traceable fixture expectations. |
-| Enterprise review client | Displays checked records and evidence in FLETCHER or Workbench-style surfaces. | Public KILN records that can be consumed without making KILN depend on enterprise repos. |
+| Enterprise review client | Displays checked records and evidence in WITNESS or Workbench-style surfaces. | Public KILN records that can be consumed without making KILN depend on enterprise repos. |
 | Future agent | Resumes KILN work from VTRACE docs, review ledgers, and evidence pointers. | Stable stage records, deferred findings, and clear next-stage triggers. |
 
 ## Scenarios
@@ -113,7 +113,7 @@ functions, or display an enterprise review experience.
 
 | Field | Description |
 |---|---|
-| Trigger | FLETCHER, Workbench, or another enterprise review client wants to display KILN evidence for a managed-agent capability. |
+| Trigger | WITNESS, Workbench, or another enterprise review client wants to display KILN evidence for a managed-agent capability. |
 | Inputs | Public KILN build record, diagnostics, evidence pointers, status, and unresolved gates. |
 | Normal path | Review client displays KILN-owned evidence and preserves the boundary that KILN is public infrastructure while the client is enterprise/product surface. |
 | Failure or degraded path | Review client requires private-only fields or product-specific vocabulary in KILN core; integration is rejected or moved to an adapter. |

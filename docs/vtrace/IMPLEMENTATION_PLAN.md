@@ -51,7 +51,7 @@ Implement KILN in a strict foundation sequence:
 4. Verify with local Cargo commands and fixture evidence.
 5. Validate against mission/CONOPS scenarios before any integration claims.
 
-No RUNE, CAL, WARDEN, DEPOT, GAUGE, ARCADE, FLETCHER, Workbench, provider,
+No RUNE, CAL, WARDEN, DEPOT, GAUGE, ARCADE, WITNESS, Workbench, provider,
 network, registry, policy, or enterprise integration is part of the foundation
 implementation unless a later work package explicitly scopes an adapter.
 
@@ -81,7 +81,7 @@ implementation unless a later work package explicitly scopes an adapter.
 | KILN-IF-002; KILN-CR-007; KILN-CR-009 | KILN-WP-007 | implement | CLI comes after tested core. |
 | KILN-REQ-011; KILN-REQ-012; KILN-SPEC-010 | KILN-WP-008 | implement | Close VTRACE proof, verification, validation, and trace. |
 | RUNE intake | deferred | defer | Future adapter after foundation proof. |
-| CAL/WARDEN/DEPOT/GAUGE/ARCADE/FLETCHER integrations | deferred | defer | Future interfaces/adapters after foundation proof. |
+| CAL/WARDEN/DEPOT/GAUGE/ARCADE/WITNESS integrations | deferred | defer | Future interfaces/adapters after foundation proof. |
 
 ## Boundary-To-Work-Package Mapping
 
@@ -114,7 +114,7 @@ Change-control trigger:
 - any change to readiness status semantics;
 - any side-effect beyond explicitly requested output file;
 - any enterprise-only dependency or private data assumption;
-- any scope expansion into RUNE/CAL/WARDEN/DEPOT/GAUGE/ARCADE/FLETCHER.
+- any scope expansion into RUNE/CAL/WARDEN/DEPOT/GAUGE/ARCADE/WITNESS.
 
 Rollback or revert strategy: each work package should commit independently after
 validation so it can be reverted without removing unrelated VTRACE history.
@@ -162,7 +162,7 @@ fixtures
 
 External integrations are intentionally deferred. RUNE inputs, CAL references,
 WARDEN policy, DEPOT package metadata, GAUGE/PROOF evidence, ARCADE runtime
-handoff, and FLETCHER/Workbench review display remain boundary sections in the
+handoff, and WITNESS/Workbench review display remain boundary sections in the
 build record until later work packages define adapters.
 
 ## Verification Strategy
@@ -200,7 +200,7 @@ until work packages create them.
 | KILN-RISK-002 | Hand-rolled parser accepts invalid YAML or creates false readiness. | Code Rigor requires constrained fixtures or approved parser dependency. | KILN |
 | KILN-RISK-003 | Parser/serialization dependency adds supply-chain risk. | Dependency review before addition. | KILN |
 | KILN-RISK-004 | `not_ready` build-record behavior remains unresolved. | Decide in KILN-WP-006 before emitter code. | KILN |
-| KILN-RISK-005 | Boundary sections imply real WARDEN/DEPOT/CAL/ARCADE/FLETCHER integration. | Keep outputs as metadata and diagnostics only in foundation. | KILN |
+| KILN-RISK-005 | Boundary sections imply real WARDEN/DEPOT/CAL/ARCADE/WITNESS integration. | Keep outputs as metadata and diagnostics only in foundation. | KILN |
 | KILN-RISK-006 | Side-effect-free claim is violated by file writes or hidden process/network behavior. | Code Rigor and verification test/inspect no hidden effects. | KILN |
 
 ## Stage Review Ledger

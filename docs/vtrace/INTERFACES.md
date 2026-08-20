@@ -26,7 +26,7 @@ Plan, and Work Packages.
 | KILN-IF-006 | Package-metadata handoff | schema section | KILN / DEPOT boundary | registries, package reviewers | KILN may report package intent, never publication/signing/registry mutation. | package negative fixture |
 | KILN-IF-007 | CAL primitive reference | schema section | KILN / CAL boundary | CAL authors, capability authors | KILN records identifiers/version expectations only; CAL owns semantics. | boundary review |
 | KILN-IF-008 | Runtime-readiness handoff | schema section | KILN / runtime boundary | ARCADE-style runtimes, future hosts | KILN reports checked/gated status, never executes. | mock-runtime fixture |
-| KILN-IF-009 | Enterprise review evidence view | adapter record | KILN / enterprise adapter boundary | FLETCHER/Workbench-style clients | Adapter consumes public evidence; KILN core does not gain enterprise fields/deps. | dependency inspection |
+| KILN-IF-009 | Enterprise review evidence view | adapter record | KILN / enterprise adapter boundary | WITNESS/Workbench-style clients | Adapter consumes public evidence; KILN core does not gain enterprise fields/deps. | dependency inspection |
 | KILN-IF-010 | Conformance evidence manifest | file / schema | KILN / GAUGE-PROOF boundary | GAUGE/PROOF-style tools | Evidence is inspectable without KILN owning conformance/report tools. | evidence fixture review |
 
 ## Interface Details
@@ -236,7 +236,7 @@ Evidence: Future mock-runtime fixture.
 
 ### KILN-IF-009: Enterprise review evidence view
 
-Purpose: Let FLETCHER/Workbench-style clients display public KILN evidence
+Purpose: Let WITNESS/Workbench-style clients display public KILN evidence
 without changing KILN core.
 
 Inputs: Build record and diagnostics.

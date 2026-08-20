@@ -37,7 +37,7 @@ declared capability record
 The center of KILN is not execution. The center is a deterministic check over a
 declared managed-agent capability. KILN's first implementation should prove the
 core loop with fixtures before integrating with RUNE, CAL, WARDEN, DEPOT, GAUGE,
-ARCADE, FLETCHER, or Workbench-style consumers.
+ARCADE, WITNESS, or Workbench-style consumers.
 
 ## Components
 
@@ -117,7 +117,7 @@ KILN core
 | DEPOT | Future package/registry layer. | KILN emits package metadata only; no publication/signing/registry mutation. | Negative package fixture. |
 | GAUGE / PROOF | Future conformance/report consumers. | KILN emits inspectable evidence; does not own those tools. | Evidence fixture and trace review. |
 | ARCADE / runtime hosts | Future runtime consumers. | KILN emits readiness handoff; no runtime execution. | Mock-runtime fixture. |
-| FLETCHER / Workbench | Future enterprise review clients. | Adapter/downstream only; no KILN core dependency. | Dependency inspection. |
+| WITNESS / Workbench | Future enterprise review clients. | Adapter/downstream only; no KILN core dependency. | Dependency inspection. |
 | LATTICE / BAKER | Context/umbrella references. | Enterprise context only; no KILN runtime/build dependency. | Dependency inspection. |
 
 ## Failure Modes

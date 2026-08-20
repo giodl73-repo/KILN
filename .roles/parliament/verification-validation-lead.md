@@ -22,7 +22,7 @@ workflow. KILN may prove build discipline before it proves runtime usefulness.
 - Foundation evidence remains side-effect-free: no provider calls, network calls,
   registry mutation, publication, or runtime execution.
 - Validation scenarios name real consumers such as RUNE, CAL, ARCADE, BAKER, or
-  FLETCHER without overstating current integration.
+  WITNESS without overstating current integration.
 - Deferred validation is marked as risk with a later VTRACE stage or work
   package.
 - Readiness language avoids claiming a working build system before requirements,

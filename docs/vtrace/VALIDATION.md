@@ -178,7 +178,7 @@ Acceptance criteria:
 
 - Core dependencies are public and product-neutral.
 - .NET, MSBuild, and NuGet framing remains analogy only.
-- LATTICE, FLETCHER, BAKER, enterprise connectors, provider SDKs, tenant data,
+- LATTICE, WITNESS, BAKER, enterprise connectors, provider SDKs, tenant data,
   and private product surfaces remain outside KILN core.
 
 Evidence source: KILN-WP-001, KILN-WP-002, and KILN-WP-008.
@@ -217,7 +217,7 @@ Status: pending.
 | Real DEPOT publication | DEPOT may not exist yet and KILN must not publish packages. | Package handoff may remain fixture-only. | When DEPOT or another registry contract exists. |
 | Real CAL semantic compatibility | CAL is planned separately and KILN must not own primitive semantics. | CAL references may be identifiers only. | When CAL baseline is created and interface-reviewed. |
 | GAUGE/PROOF conformance report | KILN should expose evidence but not own conformance tooling. | Public readiness claims may need later conformance depth. | When GAUGE/PROOF-style tools exist or are selected. |
-| Enterprise review UI | Enterprise surfaces must remain downstream/adapters. | Display validation may be mock-only. | When FLETCHER/Workbench-style adapter work is explicitly planned. |
+| Enterprise review UI | Enterprise surfaces must remain downstream/adapters. | Display validation may be mock-only. | When WITNESS/Workbench-style adapter work is explicitly planned. |
 
 ## Current Gaps
 

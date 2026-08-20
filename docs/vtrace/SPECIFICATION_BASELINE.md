@@ -48,7 +48,7 @@ schemas, fixtures, and validation commands.
 | KILN-SPEC-009 | KILN-REQ-010 | interface | target | Enterprise clients may consume KILN evidence through adapters without adding enterprise-only vocabulary or dependencies to KILN core. | inspection / demonstration | review-display scenario | KILN / enterprise adapter boundary | medium | proposed |
 | KILN-SPEC-010 | KILN-REQ-012 | ops / trace | target | KILN VTRACE artifacts preserve traceability from needs and scenarios through requirements, specs, interfaces/design, verification, validation, and evidence. | trace review | future-agent review | KILN | medium | proposed |
 | KILN-SPEC-011 | KILN-REQ-001; KILN-REQ-003; KILN-REQ-004 | test | target | The first implementation slice must be fixture-backed and must include valid, missing-field, and degraded declaration examples before broader integration. | test / inspection | repo maintainer review | KILN | medium | proposed |
-| KILN-SPEC-012 | KILN-REQ-002; KILN-REQ-010 | package / dependency | target | KILN core must not depend on LATTICE, FLETCHER, BAKER, enterprise connectors, tenant data, provider SDKs, or private product surfaces. | inspection / dependency review | public adoption scenario | KILN | high | proposed |
+| KILN-SPEC-012 | KILN-REQ-002; KILN-REQ-010 | package / dependency | target | KILN core must not depend on LATTICE, WITNESS, BAKER, enterprise connectors, tenant data, provider SDKs, or private product surfaces. | inspection / dependency review | public adoption scenario | KILN | high | proposed |
 
 ## Public Contracts
 

@@ -17,7 +17,7 @@ declared managed-agent capability inputs
 
 KILN is public infrastructure, like RUNE. Its core model must stay product
 neutral so public repos can adopt the build/check contract without depending on
-enterprise-only systems such as LATTICE, FLETCHER, or BAKER incubation records.
+enterprise-only systems such as LATTICE, WITNESS, or BAKER incubation records.
 
 ## Purpose
 
@@ -37,7 +37,7 @@ Agents need a repeatable build step before they do real work. KILN answers:
 - Not a common library; CAL should own reusable agent primitives.
 - Not a package registry; DEPOT should own distribution and trust catalogs.
 - Not a policy engine; WARDEN should own authorization decisions.
-- Not an enterprise product surface; FLETCHER/Workbench-style clients can
+- Not an enterprise product surface; WITNESS/Workbench-style clients can
   consume KILN records later.
 - Not tied to one provider, host, workflow language, or product vocabulary.
 
@@ -71,7 +71,7 @@ RUNE
        -> WARDEN (planned)
        -> DEPOT (planned)
        -> ARCADE / runtimes (planned consumers)
-       -> FLETCHER / review clients (planned consumers)
+       -> WITNESS / review clients (planned consumers)
 ```
 
 RUNE supplies Rust-neutral contract descriptors. KILN records how declared
